@@ -6,16 +6,9 @@ require(
 
 
 
-    	var pm = new paintModule("body");
-
-    	console.log(pm);
-    	console.log($);
-
-    	console.log(d3);
+    	new paintModule("body");
 
 
-
-		console.log(window);
 		
 
 
