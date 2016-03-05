@@ -1,11 +1,18 @@
-define(['d3', 'jquery'], function(d3, jq) {
+define(['d3', 'jquery', 'modules/Cell'], function(d3, jq, cellModule) {
+
 
   var module = function(svg, w) {
 
 
+    var cell = new cellModule(4, 7);
+
+    console.log(cell.Ask("your color?", "hex", 6));
+
 
     var drawGrid = function(s){
       d3.selectAll(".gridLine").remove();
+      
+      d3.selectAll(".cell").remove();
       
       var width = $( w ).width();
 
@@ -17,6 +24,23 @@ define(['d3', 'jquery'], function(d3, jq) {
       var thisCellWidth = width / Math.floor(width / minCellWidth)
   
       var thisCellHeight = height / Math.floor(height / minCellWidth)
+      
+      
+      
+      
+      
+      s.append("rect")
+        .attr("class", "cell")
+        .attr("fill", "#" + cell.Ask("your color?", "hex", 6))
+        .attr("x", (cell.X() - 1) * thisCellWidth)
+        .attr("y", (cell.Y() - 1) * thisCellHeight)
+        .attr("width", thisCellWidth)
+        .attr("height", thisCellHeight);
+      
+      
+      
+      
+      
       
       for(var x = 0; x < width; x += thisCellWidth){
       
@@ -48,22 +72,10 @@ define(['d3', 'jquery'], function(d3, jq) {
 
 
 
-    
 
-    
     $( w ).on("orientationchange pageshow resize", function(){
       
       drawGrid(svg);
-      
-      //width = $( w ).width();
-
-      //height = $( w ).height();
-      
-      //line
-      //  .attr("x2", width)
-      //  .attr("y2", height);
-
-
       
     });
 

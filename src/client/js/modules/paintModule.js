@@ -1,4 +1,4 @@
-define(['d3', 'jquery', 'modules/Grid', 'modules/Hunter', 'simple-statistics'], function(d3, jq, g, h, ss) {
+define(['d3', 'jquery', 'modules/Grid', 'simple-statistics'], function(d3, jq, g, h, ss) {
 
 
   var module = function(container) {
