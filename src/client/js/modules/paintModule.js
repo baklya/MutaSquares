@@ -1,10 +1,10 @@
-define(['d3', 'jquery', 'modules/Grid', 'simple-statistics'], function(d3, jq, g, h, ss) {
+define(['d3', 'jquery', 'modules/Grid', 'simple-statistics'], function(d3, jq, g, ss) {
 
 
   var module = function(container) {
 
     console.log(ss);
-    console.log(ss.sum([1, 2, 3])); // 6
+    //console.log(ss.sum([1, 2, 3])); // 6
     
     var svg = d3.select(container).append("svg")
       .attr("width", "100%")

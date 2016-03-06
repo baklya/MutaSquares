@@ -1,12 +1,42 @@
-define(['d3', 'jquery', 'modules/Cell'], function(d3, jq, cellModule) {
+define(['d3', 'jquery', 'modules/Cell', 'simple-statistics'], function(d3, jq, cellModule, ss) {
 
 
   var module = function(svg, w) {
 
+    var thisGrid = this;
 
-    var cell = new cellModule(4, 7);
 
-    console.log(cell.Ask("your color?", "hex", 6));
+
+
+    var cells = [];
+
+
+    var maxCount = 70;
+
+    for(var j = 0; j < maxCount; j++){
+      
+      
+      setTimeout( function() {
+
+
+        cells.push(new cellModule(Math.floor((Math.random() * 60) + 1), Math.floor((Math.random() * 30) + 1), null, cells, thisGrid));
+        
+      } , j *  78);
+
+    
+      
+      
+      
+    }
+
+
+
+
+
+    //var cell = ;
+
+    //console.log(cell.Ask("your color?", "hex", 6));
+
 
 
     var drawGrid = function(s){
@@ -15,27 +45,29 @@ define(['d3', 'jquery', 'modules/Cell'], function(d3, jq, cellModule) {
       d3.selectAll(".cell").remove();
       
       var width = $( w ).width();
-
       var height = $( w ).height();
   
   
       var minCellWidth = 30;
   
       var thisCellWidth = width / Math.floor(width / minCellWidth)
-  
       var thisCellHeight = height / Math.floor(height / minCellWidth)
       
       
+      $.each(cells, function(i, cell){
+        
+        s.append("rect")
+          .attr("class", "cell")
+          .attr("fill", "#" + cell.Ask("your color?", "hex", 6))
+          .attr("x", (cell.X() - 1) * thisCellWidth)
+          .attr("y", (cell.Y() - 1) * thisCellHeight)
+          .attr("width", thisCellWidth)
+          .attr("height", thisCellHeight);
+        
+      })
       
       
-      
-      s.append("rect")
-        .attr("class", "cell")
-        .attr("fill", "#" + cell.Ask("your color?", "hex", 6))
-        .attr("x", (cell.X() - 1) * thisCellWidth)
-        .attr("y", (cell.Y() - 1) * thisCellHeight)
-        .attr("width", thisCellWidth)
-        .attr("height", thisCellHeight);
+
       
       
       
@@ -67,6 +99,11 @@ define(['d3', 'jquery', 'modules/Cell'], function(d3, jq, cellModule) {
          .attr("stroke", "black");
       }
     }
+
+
+    thisGrid.DrawGrid = function(){
+      drawGrid(svg);
+    } 
 
     drawGrid(svg);
 
