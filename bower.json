@@ -1,7 +1,7 @@
 {
-  "name": "Education",
+  "name": "MutaSquares",
   "version": "0.0.0",
-  "homepage": "https://github.com/baklya/Education",
+  "homepage": "https://github.com/baklya/MutaSquares",
   "main": "js/main.js",
   "moduleType": [
     "amd"
