@@ -41,7 +41,7 @@ define(['jquery', 'simple-statistics'], function(jq, ss) {
 
 
       
-    } , (lifeCounts / 2) *  1000);
+    } , (lifeCounts / 1.03) *  1000);
     
     
     

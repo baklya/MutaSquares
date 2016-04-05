@@ -11,7 +11,7 @@ define(['d3', 'jquery', 'modules/Cell', 'simple-statistics'], function(d3, jq, c
     var cells = [];
 
 
-    var maxCount = 70;
+    var maxCount = 40;
 
     for(var j = 0; j < maxCount; j++){
       
